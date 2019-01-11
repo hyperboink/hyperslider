@@ -1,5 +1,5 @@
 /*
- * Hyperslider
+ * Hyperslider Plugin
  * Copyright 2016 by Pogadz
  */
 
