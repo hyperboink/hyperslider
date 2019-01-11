@@ -1,9 +1,9 @@
 /*
  * Hyperslider Plugin
- * Copyright 2016 by Pogadz
+ * Copyright 2018 by Pogadz
  */
 
-.hyperslider{    margin: 20px 0 20px 0;position:relative;overflow:hidden;}
+.hyperslider{    margin: 0px 0 20px 0;position:relative;overflow:hidden;}
 
 .hyperslider .slide{position:relative;overflow:hidden;}
 
@@ -52,7 +52,11 @@
 	display:inline-block;
 }
 
-.hyperslider .slide-nav{text-align:center; margin: 10px 0 0 0;}
+.hyperslider .slide-nav{
+	text-align:center;
+	margin: 10px 0 0 0;
+	position: relative;
+}
 .hyperslider .slide-nav .active{background:#a2a2a2;}
 .hyperslider .no-transition .slide-box{
 	transition: left 0s !important;
@@ -99,12 +103,22 @@
 
 .hyperslider .fade{
 	opacity: 1;
+	transition: left 0s, opacity 0s;
+	-webkit-transition: left 0s, opacity 0s;
+	-moz-transition: left 0s, opacity 0s;
+	-o-transition: left 0s, opacity 0s;
+	-ms-transition: left 0s, opacity 0s;
+
 }
 
 .hyperslider .fade .slide-box{
 	left:0;
 	opacity: 0;
-	transition: left 0s, opacity 0.5s;
+	transition: opacity 0.5s;
+	-webkit-transition: opacity 0.5s;
+	-moz-transition: opacity 0.5s;
+	-o-transition: opacity 0.5s;
+	-ms-transition: opacity 0.5s;
 }
 
 .hyperslider .fade .slide-box.active ~ .slide-box{
@@ -112,6 +126,10 @@
 	left: 0;
 	z-index:0;
 	transition: left 0s, opacity 0.5s;
+	-webkit-transition: left 0s, opacity 0.5s;
+	-moz-transition: left 0s, opacity 0.5s;
+	-o-transition: left 0s, opacity 0.5s;
+	-ms-transition: left 0s, opacity 0.5s;
 	
 }
 
@@ -124,8 +142,6 @@
 	-o-transition: left 0s, opacity .5s;
 	-ms-transition: left 0s, opacity .5s;
 }
-
-.hyperslider .fade .slide-box:first-child{z-index:0;}
 
 .hyperslider .flash .slide-box{
 	left:0;
@@ -156,3 +172,20 @@
 
 .hyperslider .flash .slide-box:first-child{z-index:0;}
 
+.hyperslider.no-transition .slide-box.active{
+	z-index:0;
+	transition: opacity 0s;
+	-webkit-transition:opacity 0s;
+	-moz-transition: opacity 0s;
+	-ms-transition: opacity 0s;
+	-o-transition: opacity 0s;
+}
+
+.hyperslider.no-transition .slide-box.active ~ .slide-box{
+	transition: opacity 0s;
+	transition: opacity 0s;
+	-webkit-transition:opacity 0s;
+	-moz-transition: opacity 0s;
+	-ms-transition: opacity 0s;
+	-o-transition: opacity 0s;
+}

@@ -8,10 +8,10 @@ $("#sample1").hyperslider();
 <div id="sample1" class="hyperslider">
 	<div class="slides">
 		<div class="slide-box"><img src="images/1.jpg"></div>
-		<div class="slide-box"><img src="images/5.jpg"></div>
-		<div class="slide-box"><img src="images/3.jpg"></div>
 		<div class="slide-box"><img src="images/2.jpg"></div>
+		<div class="slide-box"><img src="images/3.jpg"></div>
 		<div class="slide-box"><img src="images/4.jpg"></div>
+		<div class="slide-box"><img src="images/5.jpg"></div>
 	</div>
 	<div class="slide-control">
 		<button class="slide-prev">Prev</button>
@@ -27,6 +27,8 @@ $('#sample1').hyperslider({
     animation: 'slide', // fade | slide | flash
     autoplay: true, // false for autoplay slide
     delay: 7000, // 7000 milliseconds delay
+    controls: true, // false to disable prev/next
+    navigation: true, // false to disable the slide navigation index
     before: function(el, settings){
         // code before
         // the slider loads
@@ -44,10 +46,10 @@ $('#sample1').hyperslider({
 <div id="sample1" class="hyperslider" data-hyperslider>
 	<div class="slides">
 		<div class="slide-box"><img src="images/1.jpg"></div>
-		<div class="slide-box"><img src="images/5.jpg"></div>
-		<div class="slide-box"><img src="images/3.jpg"></div>
 		<div class="slide-box"><img src="images/2.jpg"></div>
+		<div class="slide-box"><img src="images/3.jpg"></div>
 		<div class="slide-box"><img src="images/4.jpg"></div>
+		<div class="slide-box"><img src="images/5.jpg"></div>
 	</div>
 	<div class="slide-control">
 		<button class="slide-prev">Prev</button>

@@ -111,7 +111,9 @@
     $('#sample1').hyperslider({
         animation: 'fade',
         autoplay: true,
-        delay: 5000
+        delay: 5000,
+        controls: true,
+        navigation: true
     });
 
               </pre>
@@ -159,7 +161,9 @@
     $("#sample2").hyperslider({
        animation: "flash",
        autoplay: true,
-       delay: 4000
+       delay: 4000,
+       controls: true,
+       navigation: true
     });
 
               </pre>
@@ -193,7 +197,9 @@
     $('#sample3').hyperslider({
         animation: 'slide',
         autoplay: true,
-        delay: 4000
+        delay: 4000,
+        controls: true,
+        navigation: true
     });
 
               </pre>
@@ -214,6 +220,8 @@
         animation: 'slide',
         autoplay: true,
         delay: 4000,
+        controls: true,
+        navigation: true,
         before: function(el, settings){
             // code before
             // the slider loads
@@ -296,10 +304,12 @@
         <ul>
             <li><span>data-hyperslider</span> - this will automatically enable the plugin with it's default settings</li>
             <li><span>data-animation="slide"</span> - fade, flash, slide</li>
-            <li><span>data-autoplay="true"</span> - true or false</li>
+            <li><span>data-autoplay="true"</span> - enable/disable autoplay</li>
             <li><span>data-delay="7000"</span> - 7000 milliseconds</li>
+            <li><span>data-controls="true"</span> - enable/disable prev/next</li>
+            <li><span>data-navigation="true"</span> - enable/disable slide navigation index</li>
             <li><span>data-before="function() { console.log('I am fired first!') }"</span> - callback before the slide</li>
-            <li><span>data-after="function() { console.log('I am fired after the slider loads!') }"</span> callback after the slide</li>
+            <li><span>data-after="function() { console.log('I am fired after the slider loads!') }"</span> - callback after the slide</li>
         </ul>
 
 
@@ -309,7 +319,7 @@
 
 <script src="js/jquery-1.12.4.js"></script>
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-<script src="js/hyperslider.min.js"></script>
+<script src="js/hyperslider.js"></script>
 
 <script>
 

@@ -1,6 +1,6 @@
 /*
  * Hyperslider Plugin
- * Copyright 2016 by Pogadz
+ * Copyright 2018 by Pogadz
  */
 
 (function($){
@@ -12,8 +12,10 @@
 		animation: 'fade', // slide | fade | flash
 		autoplay: false, // set true if you want the slide to autoplay
 		delay:  1000, // delay per slide
-		after: null, // callback - fires before slide is loaded
-		before: null // callback - fires after slide is loaded
+		controls: true, // enable/disable prev/next
+		navigation: true, // enable/disable slide navigation index
+		after: function(){}, // callback - fires before slide is loaded
+		before: function(){} // callback - fires after slide is loaded
 	}
 
 	function Hyperslider(options){
@@ -55,7 +57,7 @@
 		$(el).find('.slide-box').each(function(){
 			var self = $(this);
 			var index = self.index() + 1;
-			self.attr('id', 'slide-box-'+index);
+			self.attr('id', 'slide-box-' + index);
 
 		});
 
@@ -80,21 +82,26 @@
 		hypercount = 1,
 		timeout;
 
-		this.init = function(){
-
-			$(el).find('.slides').addClass(settings.animation);
-
-			if($(el).find('active'))
-				$(el).addClass('no-transition').find('.slide-box').first().addClass('active');
+		self.init = function(){
 
 			self.generateIndicator();
 			self.setCurrentIndicator(1);
 
+			$(el).find('.slides').addClass(settings.animation);
+
+			if($(el).find('active')) $(el).addClass('no-transition').find('.slide-box').first().addClass('active');
+
 			if(settings.autoplay) self.autoplay(settings.delay);
+
+			if(!settings.controls) $(el).find('.slide-control').remove();
+
+			if(!settings.navigation) $(el).find('.slide-nav').remove();
+
+			if(el.find('.slide-box').length <= 1) $(el).find('.slide-control, .slide-nav').remove();
 
 		}
 
-		this.previous = function(){
+		self.previous = function(){
 
 			hypercount = hypercount > 1 ? hypercount - 1 :  el.find('.slide-box').length;
 			self.setCurrent(hypercount);
@@ -103,7 +110,7 @@
 
 		}
 
-		this.next = function(){
+		self.next = function(){
 
 			hypercount = hypercount < $(el).find('.slide-box').length ? hypercount + 1 : 1;
 			self.setCurrent(hypercount);
@@ -112,24 +119,24 @@
 
 		}
 
-		this.indicator = function(index){
+		self.indicator = function(index){
 			self.setCurrent(index);
 			hypercount = parseInt(index);
 			self.setCurrentIndicator(index);
 
 		}
 
-		this.setCurrentIndicator = function(currentIndex){
+		self.setCurrentIndicator = function(currentIndex){
 			el.find('.slide-nav span').removeClass('active');
 			el.find('.slide-nav-' + currentIndex).addClass('active');
 		}
 
-		this.setCurrent = function(index){
+		self.setCurrent = function(index){
 			el.find('.slide-box').removeClass('active');
 			el.find('#slide-box-' + index).addClass('active');
 		}
 
-		this.generateIndicator = function(){
+		self.generateIndicator = function(){
 
 			var slideNav = '';
 
@@ -142,11 +149,11 @@
 
 		}
 
-		this.removeNoTransition = function(){
+		self.removeNoTransition = function(){
 			$(el).removeClass('no-transition');
 		}
 
-		this.disableClickTransition = function(elem){
+		self.disableClickTransition = function(elem){
 			$(elem).prop('disabled', true);
 
 			setTimeout(function(){
@@ -154,7 +161,7 @@
 			}, 500);
 		}
 
-		this.autoplay = function(delay){
+		self.autoplay = function(delay){
 			timeout = setTimeout(function(){
 				self.autoplay();
 				self.next(el);
@@ -162,7 +169,7 @@
 
 		}
 
-		this.resetDelay = function(){
+		self.resetDelay = function(){
 			clearTimeout(timeout);
 		}
 
